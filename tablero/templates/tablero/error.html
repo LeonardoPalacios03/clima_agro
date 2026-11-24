@@ -1,0 +1,11 @@
+{% extends "tablero/base.html" %}
+{% block titulo %}Datos no disponibles{% endblock %}
+{% block contenido %}
+<div class="aviso" style="font-size:1rem">
+  <h2 style="margin-top:0">No pudimos obtener los datos en este momento</h2>
+  <p>{{ mensaje }}</p>
+  <p>El tablero no muestra datos guardados ni estimados: si la API pública no responde, preferimos no mostrar nada antes que mostrar cifras que no se pueden verificar. Intenta nuevamente en unos minutos.</p>
+  <p><a href="">Reintentar</a> · <a href="{{ api_docs }}" target="_blank" rel="noopener">Estado y documentación de Open-Meteo</a></p>
+</div>
+{% endblock %}
+{% block pie %}{% endblock %}

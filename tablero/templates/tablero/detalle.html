@@ -1,0 +1,22 @@
+{% extends "tablero/base.html" %}
+{% block titulo %}Vista de detalle{% endblock %}
+{% block contenido %}
+<div class="vista-actual">
+  <div>
+    <span class="etiqueta">Estás en: vista de detalle</span>
+    <h2>¿Dónde y cuándo ocurre? <small style="font-weight:400;color:var(--tinta2)">· {{ zona_info.nombre }}, {{ anio }}</small></h2>
+  </div>
+  {% include "tablero/_filtros.html" %}
+</div>
+{% if parcial %}<div class="aviso">El año {{ anio }} está en curso: los cortes usan el tramo <strong>{{ periodo_txt }}</strong>.</div>{% endif %}
+<section class="graficos">
+  {% for g in graficos %}
+  <figure>
+    <p class="pregunta"><span>{{ g.id }}</span>{{ g.pregunta }}</p>
+    <img src="data:image/png;base64,{{ g.img }}" alt="{{ g.pregunta }}">
+    <figcaption>{{ g.lectura }}</figcaption>
+  </figure>
+  {% endfor %}
+</section>
+<p style="margin-top:16px"><a href="/?zona={{ zona }}&anio={{ anio }}">← Volver a la vista general</a></p>
+{% endblock %}

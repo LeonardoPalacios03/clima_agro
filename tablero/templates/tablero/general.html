@@ -1,0 +1,33 @@
+{% extends "tablero/base.html" %}
+{% block titulo %}Vista general{% endblock %}
+{% block contenido %}
+<div class="vista-actual">
+  <div>
+    <span class="etiqueta">Estás en: vista general</span>
+    <h2>¿Cómo viene el año en {{ zona_info.nombre }}? <small style="font-weight:400;color:var(--tinta2)">· {{ zona_info.rubro }}, {{ anio }}</small></h2>
+  </div>
+  {% include "tablero/_filtros.html" %}
+</div>
+{% if parcial %}<div class="aviso">El año {{ anio }} está en curso: todos los valores comparan el tramo <strong>{{ periodo_txt }}</strong>, no años completos.</div>{% endif %}
+<section class="kpis" aria-label="Indicadores clave">
+  {% for k in kpis %}
+  <div class="kpi">
+    <h3>{{ k.nombre }}</h3>
+    <div class="valor">{{ k.valor }}<span class="unidad">{{ k.unidad }}</span></div>
+    <div class="ref">Referencia: {{ k.referencia }} {{ k.unidad }} ({{ k.ref_txt }}, {{ anio_ref_desde }}–{{ anio_ref_hasta }})</div>
+    <div class="delta {{ k.estado }}">{{ k.flecha }} {{ k.diferencia }} {{ k.unidad }}{% if k.pct %} ({{ k.pct }}){% endif %} vs. referencia ·
+      {% if k.estado == "favorable" %}favorable{% elif k.estado == "desfavorable" %}desfavorable{% else %}sin cambio{% endif %}</div>
+  </div>
+  {% endfor %}
+</section>
+<section class="graficos">
+  {% for g in graficos %}
+  <figure>
+    <p class="pregunta"><span>{{ g.id }}</span>{{ g.pregunta }}</p>
+    <img src="data:image/png;base64,{{ g.img }}" alt="{{ g.pregunta }}">
+    <figcaption>{{ g.lectura }}</figcaption>
+  </figure>
+  {% endfor %}
+</section>
+<p style="margin-top:16px"><a href="/detalle/?zona={{ zona }}&anio={{ anio }}">Ver dónde y cuándo ocurre → vista de detalle</a></p>
+{% endblock %}
