@@ -1,6 +1,6 @@
 # Clima para el agro chileno · Ficha técnica
 
-**Autor:** Leonardo Palacios
+**Autor:** Leonardo Palacios - Marcos Muñoz
 
 **Asignatura:** Visualización de Datos · INACAP · Evaluación N°3
 
