@@ -4,7 +4,7 @@
 
 **Asignatura:** Visualización de Datos · INACAP · Evaluación N°3
 
-**Aplicación desplegada:** https://URL-DE-VERCEL.vercel.app
+**Aplicación desplegada:** https://clima-agro1.vercel.app
 
 ---
 
